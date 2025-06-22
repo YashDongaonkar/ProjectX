@@ -30,7 +30,9 @@ export default sendEmail;
 
 // use it like this in any route-controller,like when successfully login then send invitation mail
 // import sendEmail from "./utils/mailer.js";
-
+// set env variable as 
+//      - EMAIL_PASS=zedy tewe ofgr imoa
+//      - EMAIL_USER=randomwork874@gmail.com
 //   await sendEmail(
 //     email,
 //     'Welcome to __!',
