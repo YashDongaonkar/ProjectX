@@ -1,8 +1,14 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
+
+import HomeNav from '../components/HomeNav'
+import HomeBody from '../components/HomeBody'
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+      <HomeNav />
+      <HomeBody />
+    </>
   )
 }
 

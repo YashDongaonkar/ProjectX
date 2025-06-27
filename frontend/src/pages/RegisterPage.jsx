@@ -1,4 +1,5 @@
-import React from 'react'
+// FIXES NEEDED
+
 import { Link } from 'react-router-dom';
 
 const RegisterPage = () => {

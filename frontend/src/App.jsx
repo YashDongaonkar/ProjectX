@@ -39,7 +39,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassPage />} />
 
           {/* Protected */}
-          <Route element={<ProtectedRoute />}>
+          {/* UNCOMMENT AFTER COMPLETING AUTHENTICATION */}
+          {/* <Route element={<ProtectedRoute />}> */}
             <Route path="/home" element={<HomePage />} />
             <Route path="/attendance" element={<AttendancePage />} />
             <Route path="/attendance/add" element={<AddSubjectPage />} />
@@ -48,7 +49,7 @@ function App() {
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/polls" element={<PollsPage />} />
             <Route path="/calendar" element={<CalendarPage />} />
-          </Route>
+          {/* </Route> */}
         </Routes>
       </Router>
     </>

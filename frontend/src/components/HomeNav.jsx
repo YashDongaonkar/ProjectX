@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const LandingNav = () => {
+const HomeNav = () => {
   return (
     <nav className="navbar">
 
@@ -9,12 +9,8 @@ const LandingNav = () => {
       </h1>
 
       <div className="navbar-end">
-        <Link to="/login">
-          <button class="btn btn-lg btn-ghost text-base">LOGIN</button>
-        </Link>
-
-        <Link to="/register">
-          <button className="btn btn-lg btn-ghost text-base">REGISTER</button>
+        <Link to="/">
+          <button className="btn btn-lg btn-ghost text-base">LOGOUT</button>
         </Link>
       </div>
 
@@ -22,4 +18,4 @@ const LandingNav = () => {
   )
 }
 
-export default LandingNav
+export default HomeNav
