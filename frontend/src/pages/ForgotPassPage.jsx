@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ForgotPass = () => {
+const ForgotPassPage = () => {
   return (
     <div className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen min-w-screen flex items-center justify-center">
       <div className="bg-white w-100 p-6 rounded-lg shadow-md text-zinc-950 flex flex-col items-center justify-center ">
@@ -43,4 +43,4 @@ const ForgotPass = () => {
   );
 };
 
-export default ForgotPass;
+export default ForgotPassPage;

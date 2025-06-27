@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LandingNav from "../components/LandingNav";
 
-const Hero = () => {
+const LandingPage = () => {
   return (
     <div className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen min-w-screen flex flex-col ">
       <LandingNav />
@@ -32,4 +32,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default LandingPage;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const RegisterPage = () => {
   return (
     <div className='bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen min-w-screen flex items-center justify-center'>
         <div className='bg-white w-1/3 p-6 rounded-lg shadow-md text-zinc-950'>
@@ -40,4 +40,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default RegisterPage

@@ -1,48 +1,54 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { isLoggedIn } from "./utils/auth"; // Assuming you have an auth utility to check login status
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-import Hero from "./pages/Hero.jsx";
-import ForgotPass from "./pages/ForgotPass.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import Profile from "./pages/Profile.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import "./App.css"; // Assuming you have some global styles
-import Home from "./pages/Home.jsx";
+
+// Pages
+
+import LandingPage from "./pages/LandingPage";
+
+import LoginPage from "./pages/LoginPage"
+import RegisterPage from "./pages/RegisterPage";
+import ForgotPassPage from "./pages/ForgotPassPage"
+
+import HomePage from "./pages/HomePage";
+
+import AttendancePage from "./pages/AttendancePage";
+import AddSubjectPage from "./pages/AddSubjectPage";
+import SubjectDetailPage from "./pages/SubjectDetailPage"
+
+import PollsPage from "./pages/PollsPage";
+
+import AnnouncementsPage from "./pages/AnnouncementsPage";
+
+import CalendarPage from "./pages/CalendarPage";
+
+import TodoPage from "./pages/TodoPage";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// modules
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          {/* Fallback route to Hero page */}
-          <Route path="*" element={<Hero />} />{" "}
-          
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPass />} />
-          <Route
-            path="/"
-            element={
-              isLoggedIn() ? <Home /> : <Hero />
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
+
+          {/* public */}
+          <Route path="*" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPassPage />} />
+
+          {/* Protected */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/attendance" element={<AttendancePage />} />
+            <Route path="/attendance/add" element={<AddSubjectPage />} />
+            <Route path="/attendance/:subjectId" element={<SubjectDetailPage />} />
+            <Route path="/todos" element={<TodoPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
+            <Route path="/polls" element={<PollsPage />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+          </Route>
         </Routes>
       </Router>
     </>
