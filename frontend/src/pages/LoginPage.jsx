@@ -1,11 +1,9 @@
-// FIXES NEEDED
-
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen min-w-screen flex items-center justify-center">
-      <div className="bg-white w-100 p-6 rounded-lg shadow-md text-zinc-950">
+    <div className="min-h-screen min-w-screen flex items-center justify-center">
+      <div className="bg-white w-100 p-6 rounded-lg text-zinc-950 shadow-md">
         <h2 className="text-lg font-semibold mb-8 flex items-center justify-center ">
           ProjectX
         </h2>
@@ -47,7 +45,7 @@ const LoginPage = () => {
             </p>
           </div>
           <button
-            className=" bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 w-50 m-auto"
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 w-50 m-auto rounded-xl"
             type="submit"
           >
             Login
@@ -58,6 +56,10 @@ const LoginPage = () => {
               Sign up
             </Link>
           </p>
+          <div>
+
+            
+          </div>
         </form>
       </div>
     </div>
