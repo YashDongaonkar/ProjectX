@@ -80,87 +80,91 @@ export default function TodoPage() {
   };
 
   return (
-    <div className="px-4 py-8 sm:px-8 lg:px-20 max-w-6xl mx-auto font-sans min-h-screen">
+    <>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mx-10 mb-6">
-        <p className="text-3xl item-center sm:text-4xl font-bold">📋 To-Do List</p>
-        <div className="flex flex-col sm:flex-row gap-3 items-center w-full sm:w-auto">
-
+      <div className="navbar">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary tracking-wide navbar-start">To-Do List</h2>
+        <div className="navbar-end">
           <button
             onClick={openModal}
-            className="rounded-md border border-transparent px-5 py-2 text-base font-medium bg-[#1a1a1a] text-white cursor-pointer transition-colors duration-200 hover:border-gray-500"
+            className="btn btn-lg btn-primary"
           >
-            + New Task
+            New Task
           </button>
         </div>
       </div>
 
 
-      <div className="max-h-[80vh] overflow-y-auto space-y-3 pr-2 light-scrollbar">
+      <ul className="list">
         {todos.map(todo => (
-          <div
+          <li
             key={todo.id}
-            className="p-3 sm:p-4 bg-gray-100 border border-gray-200 rounded-md shadow hover:shadow-md transition text-sm sm:text-base"
+            className="list-row flex justify-between"
           >
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
+            <div className="list-col-grow w-100">
               <h2 className="font-semibold text-base sm:text-lg">{todo.task}</h2>
               <span className={`font-medium ${priorityColor[todo.priority]}`}>
                 {todo.priority}
               </span>
             </div>
-            <div className="text-gray-600 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
+
+            <div className="list-col-grow w-100">
               <p>📅 <b>Deadline:</b> {new Date(todo.deadline).toLocaleString()}</p>
               <p>🕒 <b>Created:</b> {new Date(todo.createdAt).toLocaleString()}</p>
-              <p>✅ <b>Status:</b> {todo.completed ? "Completed ✅" : "Incomplete ❌"}</p>
+              <p>✅ <b>Status:</b> {todo.completed ? "Completed" : "Incomplete"}</p>
             </div>
-            <div className="mt-2 flex flex-wrap gap-2">
+
+            <div className="w-50">
               {!todo.completed && (
-                <button className="rounded-md border border-transparent px-5 py-2 text-base font-medium bg-[#1a1a1a] text-white cursor-pointer transition-colors duration-200 hover:border-gray-500">
-                  ✔ Mark as Done
+                <button className="btn btn-lg btn-primary mr-1">
+                  Done
                 </button>
               )}
-              <button className="rounded-md border border-transparent px-5 py-2 text-base font-medium bg-[#1a1a1a] text-white cursor-pointer transition-colors duration-200 hover:border-gray-500">
-                🗑 Delete
+              <button className="btn btn-lg btn-primary">
+                Delete
+              </button>
+            </div>
+          </li>
+        ))
+        }
+      </ul>
+
+      <dialog ref={modalRef} className="modal">
+        <form>
+          <div className="modal-box">
+            <h2 className="text-xl font-bold mb-4 text-primary">Create New Task</h2>
+            <input
+              placeholder="Task Name"
+              className="input text-base text-secondary"
+            />
+            <br />
+            <br />
+            <input
+              type="datetime-local"
+              className="input text-base text-secondary"
+            />
+            <br />
+            <br />
+            <select className="select select-ghost text-base text-secondary">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+            </select>
+            <div className="modal-action">
+              <button
+                onClick={closeModal}
+                className="btn btn-primary"
+              >
+                Cancel
+              </button>
+              <button className="btn btn-secondary">
+                Save
               </button>
             </div>
           </div>
-        ))
-        }
-      </div>
+        </form>
 
-      <dialog ref={modalRef} className="modal">
-        <div className="modal-box">
-          <h2 className="text-xl font-bold mb-4 text-primary">Create New Task</h2>
-          <input
-            placeholder="Task Name"
-            className="input text-base text-secondary"
-          />
-          <br />
-          <br />
-          <input
-            type="datetime-local"
-            className="input text-base text-secondary"
-          />
-          <br />
-          <br />
-          <select className="select select-ghost text-base text-secondary">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-          <div className="modal-action">
-            <button
-              onClick={closeModal}
-              className="btn btn-primary"
-            >
-              Cancel
-            </button>
-            <button className="btn btn-secondary">
-              Save
-            </button>
-          </div>
-        </div>
       </dialog>
-    </div>
+    </>
   );
 }
