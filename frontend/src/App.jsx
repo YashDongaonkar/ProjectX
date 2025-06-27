@@ -44,11 +44,12 @@ function App() {
             <Route path="/attendance" element={<AttendancePage />} />
             <Route path="/attendance/add" element={<AddSubjectPage />} />
             <Route path="/attendance/:subjectId" element={<SubjectDetailPage />} />
-            <Route path="/todos" element={<TodoPage />} />
+            
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/polls" element={<PollsPage />} />
             <Route path="/calendar" element={<CalendarPage />} />
           </Route>
+          <Route path="/todos" element={<TodoPage />} />
         </Routes>
       </Router>
     </>
