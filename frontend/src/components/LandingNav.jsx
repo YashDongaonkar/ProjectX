@@ -1,16 +1,24 @@
+import { Link } from "react-router-dom"
+
 const LandingNav = () => {
   return (
-    <div>
-        <nav className='bg-white shadow-md min-w-screen  top-0 left-0 z-50'>
-            <div className='max-w-7xl mx-auto px-4 py-3 flex justify-between items-center'>
-            <div className='text-xl font-bold text-blue-600'>ProjectX</div>
-            <div className='space-x-4'>
-                <a href='/login' className='text-gray-700 hover:text-blue-600'>Login</a>
-                <a href='/register' className='text-gray-700 hover:text-blue-600'>Register</a>
-            </div>
-            </div>
-        </nav>
-    </div>
+    <nav className="navbar">
+
+      <h1 className="text-3xl md:text-4xl font-extrabold text-primary tracking-wide navbar-start">
+        Project<span className="text-secondary">X</span>
+      </h1>
+
+      <div className="navbar-end">
+        <Link to="/login">
+          <button class="btn btn-ghost text-base">LOGIN</button>
+        </Link>
+
+        <Link to="/register">
+          <button className="btn btn-ghost text-base">REGISTER</button>
+        </Link>
+      </div>
+
+    </nav >
   )
 }
 
