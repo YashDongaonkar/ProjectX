@@ -10,7 +10,7 @@ const HomeNav = () => {
 
       <div className="navbar-end">
         <Link to="/">
-          <button className="btn btn-lg btn-ghost text-base">LOGOUT</button>
+          <button className="btn btn-lg btn-ghost text-base bg-black text-white hover:bg-gray-700">LOGOUT</button>
         </Link>
       </div>
 
