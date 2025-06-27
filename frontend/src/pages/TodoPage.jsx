@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeftIcon , Trash2Icon, CheckCheck, Plus} from "lucide-react"
 
 export default function TodoPage() {
 
@@ -83,13 +85,14 @@ export default function TodoPage() {
     <>
 
       <div className="navbar">
+        <Link to="/home"><ArrowLeftIcon /></Link>
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary tracking-wide navbar-start">To-Do List</h2>
         <div className="navbar-end">
           <button
             onClick={openModal}
             className="btn btn-lg btn-primary"
           >
-            New Task
+            <Plus /> New Task
           </button>
         </div>
       </div>
@@ -115,13 +118,13 @@ export default function TodoPage() {
             </div>
 
             <div className="w-50">
-              {!todo.completed && (
-                <button className="btn btn-lg btn-primary mr-1">
-                  Done
+           
+                <button className="btn btn-lg btn-primary mr-1" disabled={todo.completed}>
+                  <CheckCheck />
                 </button>
-              )}
+            
               <button className="btn btn-lg btn-primary">
-                Delete
+                <Trash2Icon />
               </button>
             </div>
           </li>
