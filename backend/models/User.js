@@ -8,8 +8,15 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['admin', 'student'], default: 'student' },
   batch: { type: Number, required: true },
   department: { type: String, required: true },
-  institute: { type: String, required: true }
+  institute: { type: String, required: true },
+
+  subjects: [{
+    subjectId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject', required: true },
+    totalClasses: { type: Number, default: 0, min: 0 },
+    presentDays: { type: Number, default: 0, min: 0 }
+  }]
 }, { timestamps: true });
+
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();

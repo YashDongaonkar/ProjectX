@@ -1,9 +1,13 @@
-import React from 'react'
+import AttendanceNav from "../components/AttendanceNav";
+import AttendanceBody from "../components/AttendanceBody"
 
-const Attendance = () => {
+const AttendancePage = () => {
   return (
-    <div>Attendance</div>
+    <>
+      <AttendanceNav />
+      <AttendanceBody />
+    </>
   )
 }
 
-export default Attendance
+export default AttendancePage
