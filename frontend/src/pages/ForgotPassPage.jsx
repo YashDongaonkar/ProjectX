@@ -1,5 +1,6 @@
 // FIXES NEEDED
 import { Link } from "react-router-dom";
+import { authRoute } from "../utils/api";
 
 const ForgotPassPage = () => {
   return (
@@ -9,7 +10,7 @@ const ForgotPassPage = () => {
           ProjectX
         </h2>
         <form
-          action={"/api/forgot-password"}
+          action={authRoute + "/forgot-password"}
           method="POST"
           className=" space-y-4 max-w-md mx-auto w-full p-6 rounded-lg flex flex-col gap-2.5"
         >
