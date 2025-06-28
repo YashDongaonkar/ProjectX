@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom"
 
 const AttendanceBody = () => {
 
     const [subjects, setSubjects] = useState([]);
 
-    const markAttendance = async (subjectId, isPresent) => {
+    const markAttendance = async (subjectDetail, isPresent) => {
         try {
-            // await axios.patch(`/api/user/attendance/${subjectId}`, { isPresent });
+            // await axios.patch(`/api/user/attendance/${subjectDetail}`, { isPresent });
             setSubjects(prev =>
                 prev.map(subject =>
-                    subject.subjectId._id === subjectId
+                    subject.subjectDetail._id === subjectDetail
                         ? {
                             ...subject,
                             totalClasses: subject.totalClasses + 1,
@@ -29,7 +30,7 @@ const AttendanceBody = () => {
 
         const dummySubjects = [
             {
-                subjectId: {
+                subjectDetail: {
                     _id: "subj1",
                     name: "Mathematics"
                 },
@@ -37,7 +38,7 @@ const AttendanceBody = () => {
                 presentDays: 8
             },
             {
-                subjectId: {
+                subjectDetail: {
                     _id: "subj2",
                     name: "Physics"
                 },
@@ -45,7 +46,7 @@ const AttendanceBody = () => {
                 presentDays: 9
             },
             {
-                subjectId: {
+                subjectDetail: {
                     _id: "subj3",
                     name: "Computer Science"
                 },
@@ -53,7 +54,7 @@ const AttendanceBody = () => {
                 presentDays: 13
             },
             {
-                subjectId: {
+                subjectDetail: {
                     _id: "subj4",
                     name: "Mathematics"
                 },
@@ -61,7 +62,7 @@ const AttendanceBody = () => {
                 presentDays: 8
             },
             {
-                subjectId: {
+                subjectDetail: {
                     _id: "subj5",
                     name: "Physics"
                 },
@@ -69,7 +70,7 @@ const AttendanceBody = () => {
                 presentDays: 9
             },
             {
-                subjectId: {
+                subjectDetail: {
                     _id: "subj6",
                     name: "Computer Science"
                 },
@@ -85,45 +86,45 @@ const AttendanceBody = () => {
     return (
 
         <div className="carousel carousel-vertical rounded-box">
-            {subjects.map(({ subjectId, totalClasses, presentDays }) => {
+            {subjects.map(({ subjectDetail, totalClasses, presentDays }) => {
                 const percentage =
                     totalClasses === 0
                         ? 0
                         : Math.round((presentDays / totalClasses) * 100);
 
                 return (
-                    <div key={subjectId._id} className="carousel-item">
+                    <div key={subjectDetail._id} className="carousel-item">
                         <div className="card card-sm bg-base-200 m-5 p-5">
+                            <Link to={`/attendance/{${subjectDetail._id}}`} className="card-body">
+                                <h2 className="card-title">{subjectDetail.name}</h2>
 
-                            <h2 className="card-title">{subjectId.name}</h2>
-                            <div className="card-body">
                                 <div>
                                     Present: {presentDays} / {totalClasses} ({percentage}%)
-                                    <progress className={"progress " + (percentage<75?"progress-error":percentage<80?"progress-warning":"progress-primary")} value={percentage} max={100}></progress>
+                                    <progress className={"progress " + (percentage < 75 ? "progress-error" : percentage < 80 ? "progress-warning" : "progress-primary")} value={percentage} max={100}></progress>
                                 </div>
 
-                                <div className="card-actions">
-                                    <button
-                                        onClick={() => markAttendance(subjectId._id, true)}
-                                        className="btn btn-success"
-                                    >
-                                        Present
-                                    </button>
-                                    <button
-                                        onClick={() => markAttendance(subjectId._id, false)}
-                                        className="btn btn-danger"
-                                    >
-                                        Absent
-                                    </button>
-                                </div>
+                            </Link>
 
+                            <div className="card-actions">
+                                <button
+                                    onClick={() => markAttendance(subjectDetail._id, true)}
+                                    className="btn btn-primary"
+                                >
+                                    Present
+                                </button>
+                                <button
+                                    onClick={() => markAttendance(subjectDetail._id, false)}
+                                    className="btn btn-danger"
+                                >
+                                    Absent
+                                </button>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 );
             })}
-        </div>
+        </div >
 
 
     );
