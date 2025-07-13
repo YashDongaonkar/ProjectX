@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  username: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   role: { type: String, enum: ['admin', 'student'], default: 'student' },
@@ -24,8 +24,9 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+// Static method to compare passwords
+userSchema.statics.comparePassword = async function(candidatePassword, hashedPassword) {
+  return await bcrypt.compare(candidatePassword, hashedPassword);
 };
 
 const User = mongoose.model('User', userSchema);
